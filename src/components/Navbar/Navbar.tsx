@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import "./navbar.scss";
+import "./Navbar.scss";
 import Link from "next/link"
 import IconBoy from "../../icons/iconboy"
 
