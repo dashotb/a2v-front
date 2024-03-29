@@ -1,0 +1,78 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5vw;
+
+    @media only screen and (min-width: 1400px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.brandList {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.brandCard2 {
+    position: relative;
+    margin: 1rem;
+    flex: 1 0 25rem;
+    max-width: 20vw;
+    max-height: 50rem;
+    transition: 0.2s;
+
+}
+
+.brandCard {
+    position: relative;
+    margin: 1rem;
+    flex: 1 0 25rem;
+    max-width: 20vw;
+    max-height: 50rem;
+    transition: 0.2s;
+
+}
+
+.brandCard>img:last-of-type {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.brandCard:hover>img:last-of-type {
+    opacity: 0;
+}
+
+
+
+
+
+.BrandName {
+    text-align: center;
+    font-size: 120%;
+}
+
+.brandImage {
+    width: 20vw;
+    max-width: 280px;
+    position: absolute;
+
+}
+
+
+
+.brandImage2 {
+    width: 20vw;
+    max-width: 280px;
+    position: relative;
+}
+
+.brandBrand {
+    text-align: center;
+}
+
+.displayStack__1 {
+    margin: 0.4rem;
+}

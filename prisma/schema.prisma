@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String      @id @default(uuid())
+  email       String      @unique
+  name        String?
+  description String?
+  password    String
+  stripeCustomerId  String
+  adressnom  String?
+  adressprenom  String?
+  adressline  String?
+  adresscountry String?
+  adresspostal  String?
+  adresstown  String?
+  beneficiaire  String?
+  bic String?
+  iban  String?
+
+}
+
+model Product {
+  id        String   @id @default(uuid())  
+  name      String
+  brand     String
+  category  String
+  subcategory String?
+  price     String
+  image     String[]
+  valide    Boolean @default(false)
+  authorId  String
+  stripeId  String?
+}
+
+model Brand {
+  id        String   @id @default(uuid())
+  name      String
+  image     String[]
+  main      String?
+}
+
+model Category {
+  id      String   @id @default(uuid())
+  name    String
+  subcategory String[]
+}

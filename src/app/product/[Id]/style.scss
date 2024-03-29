@@ -1,0 +1,262 @@
+%shared {
+    box-shadow: 2px 2px 10px 5px #b8b8b8;
+}
+
+.main_product_page {
+    width: 100%;
+}
+
+.image_list {
+    margin-top: 5vw;
+    margin-left: 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    img {
+        width: 100px;
+
+        margin-bottom: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+
+        @media only screen and (max-width:480px) {
+            width: 50px;
+            height: 50px;
+        }
+        
+        
+        
+        &:hover {
+            transform: scale(1.05)
+        }
+    }
+    @media only screen and (max-width: 840px) {
+        flex-direction: row;
+        order: 1;
+        margin-top: 2vw;
+        align-self: center;
+    }
+}
+
+.viewer {
+    width: 100%;
+    display: flex;
+    @media only screen and (max-width: 840px) {
+        flex-direction: column;
+    }
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 840px) {
+        flex-direction: column;
+    }
+}
+
+.product_image {
+    margin-top: 5vw;
+    width: 100%;
+    align-content: center;
+    display: flex;
+    flex-flow: column wrap;
+    @media only screen and (max-width: 840px) {
+            align-content: baseline;
+        }
+}
+
+.productImageSingle {
+    width: 35vw;
+    @media only screen and (max-width: 840px) {
+            width: 90%;
+            margin-left: 5%;
+        }
+}
+
+.product_description {
+    position: sticky;
+    top: 25vh;
+    margin: 5vw;
+    width: 375px;
+    background: #fff;
+    @media only screen and (max-width: 840px) {
+            width: 100%;
+            margin: 0;
+        }
+}
+
+.product_title {
+    margin: 2vw;
+    font-size: 200%;
+    @media only screen and (max-width: 840px) {
+            margin: 5vw;
+        }
+}
+
+.product_pricing {
+    margin: 2vw;
+    margin-top: -1vw;
+    @media only screen and (max-width: 840px) {
+            margin: 5vw;
+            margin-top: -4vw;
+        }
+}
+
+.payment {
+    align-items: center;
+    margin: 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.pay_button {
+    cursor: pointer;
+    border-radius: 25px;
+    background: #00ffea7d;
+    color: #fff;
+    font-size: 130%;
+    width: 270px;
+    height: 5vh;
+    border: none;
+}
+
+.offer_button {
+    border-radius: 25px;
+    margin-top: 1vh;
+    background: #fff;
+    color: #00ffea7d;
+    font-size: 130%;
+    width: 270px;
+    height: 5vh;
+    border: 1px solid #00ffea7d;
+}
+
+.read-more {
+    display: none;
+}
+
+.showmore_box {
+    display: flex;
+    justify-content: space-between;
+    width: 340px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+    border-top: 1px solid #000;
+
+    @media only screen and (max-width: 840px) {
+        width: 90vw;
+    } 
+}
+
+.row {
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.showmore {
+    margin-top: 2vh;
+    font-size: 120%;
+}
+
+.showmore_button {
+    margin-top: 2vh;
+    cursor: pointer;
+    font-size: 130%;
+}
+
+.target {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease;
+}
+
+.read-more:checked~.showmore_box {
+    border: none;
+    
+}
+
+.read-more:checked~.showmore .target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.read-more~.showmore_button:before {
+    content: '+';
+}
+
+.read-more:checked ~.showmore_button:before {
+    content: '-';
+}
+
+.description {
+
+    background: #fff;
+    width: 90%;
+    margin: 5vw;
+    margin-bottom: 5vh;
+    @media only screen and (max-width: 840px) {
+           width: 100%;
+           margin: 0;
+           margin-top: 5vw;
+        }
+}
+
+.account_desc{
+    width: 100px;
+    padding-top: 15px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.desc_title {
+    text-align: center;
+    margin-top: 1vw;
+
+}
+
+.desc_txt{
+    font-size: 130%;
+    padding-bottom: 5vw;
+    margin-top: 2vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.payment_methods{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.25rem 0.75rem;
+}
+
+.discover {
+    @media only screen and (max-width: 840px) {
+        margin-top: 5vw;
+    }
+}
+
+.discover_title {
+    font-size: 200%;
+    margin-left: 5vw;
+}
+
+.discover_products{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
