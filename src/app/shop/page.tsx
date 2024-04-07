@@ -11,7 +11,7 @@ import RightArrow from "../../icons/arrow-right.png";
 
 
 const Shop:NextPage = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<any[]>([]);
     const getProducts = async () => {
         const response = await fetch(`/api/products`).then((response) => response.json());
         setProducts(response);
@@ -44,9 +44,9 @@ const Shop:NextPage = () => {
                                 </select>
                             </div>
                             <div className="page_nav">
-                                <Image src={LeftArrow} width={15} height={15}/>
+                                <Image src={LeftArrow} alt="" width={15} height={15}/>
                                  1 2 3 4 5 ... 10 
-                                <Image src={RightArrow} width={15} height={15} /> 
+                                <Image src={RightArrow} alt="" width={15} height={15} /> 
                             </div>
                         </div>
                         <div className='products'>

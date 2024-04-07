@@ -5,7 +5,7 @@ import { ProductCard } from '../components/Product/ProductCard'
 import { BrandCard } from "../components/Brand/BrandCard"
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
   const getProducts = async () => {
     
     const response = await fetch(`/api/products`).then((response) => response.json());

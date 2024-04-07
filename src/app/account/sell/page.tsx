@@ -31,7 +31,7 @@ const Sell:NextPage = async () => {
                                     <div className="content">
 
                                         <ImageUploader
-                                        email={session.user?.email}
+                                            email={session.user?.email}
                                         />
 
                                     </div>

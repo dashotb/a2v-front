@@ -35,24 +35,24 @@ const Settings: NextPage = async () => {
 
                                     <div className="fields fields--2">
                                         <label className="field">
-                                            <span className="field__label" for="firstname">Nom</span>
+                                            <span className="field__label" >Nom</span>
                                             <p>Seller Name</p>
                                         </label>
                                         <label className="field">
-                                            <span className="field__label" for="lastname">Genre</span>
+                                            <span className="field__label" >Genre</span>
                                             <p>Homme</p>
                                         </label>
                                     </div>
                                     <label className="field">
-                                        <span className="field__label" for="address">Email</span>
+                                        <span className="field__label" >Email</span>
                                         <input type="email" className="field__input" placeholder={session.user.email} />
                                     </label>
                                     <label className="field">
-                                        <span className="field__label" for="country">Mot de passe</span>
+                                        <span className="field__label" >Mot de passe</span>
                                         <p>* * * * * * * * * * * *</p>
                                     </label>
                                     <label className="field">
-                                        <span className="field__label" for="zipcode">Description</span>
+                                        <span className="field__label" >Description</span>
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam eius provident temporibus ducimus et optio nulla fugit, exercitationem sapiente ad sed delectus sequi? Voluptatibus repudiandae accusamus at adipisci eligendi?</p>
                                     </label>
                                 </div>
@@ -68,29 +68,29 @@ const Settings: NextPage = async () => {
                                 <div className="form">
                                     <div className="fields fields--2">
                                         <label className="field">
-                                            <span className="field__label" for="firstname">Prenom</span>
+                                            <span className="field__label" >Prenom</span>
                                             <p>John</p>
                                         </label>
                                         <label className="field">
-                                            <span className="field__label" for="lastname">Nom</span>
+                                            <span className="field__label" >Nom</span>
                                             <p>Doe</p>
                                         </label>
                                     </div>
                                     <label className="field">
-                                        <span className="field__label" for="address">Adresse</span>
+                                        <span className="field__label" >Adresse</span>
                                         <p>3 Av. Henri Montagut</p>
                                     </label>
                                     <div className="fields fields--3">
                                         <label className="field">
-                                            <span className="field__label" for="country">Pays</span>
+                                            <span className="field__label">Pays</span>
                                             <p>France</p>
                                         </label>
                                         <label className="field">
-                                            <span className="field__label" for="zipcode">Code postale</span>
+                                            <span className="field__label">Code postale</span>
                                             <p>31800</p>
                                         </label>
                                         <label className="field">
-                                            <span className="field__label" for="city">Ville</span>
+                                            <span className="field__label" >Ville</span>
                                             <p>Saint Gaudens</p>
                                         </label>
                                         
@@ -110,16 +110,16 @@ const Settings: NextPage = async () => {
 
                                     <div className="fields fields--2">
                                         <label className="field">
-                                            <span className="field__label" for="firstname">Beneficiaire</span>
+                                            <span className="field__label">Beneficiaire</span>
                                             <p>Habib Hadjadj</p>
                                         </label>
                                         <label className="field">
-                                            <span className="field__label" for="lastname">BIC</span>
+                                            <span className="field__label">BIC</span>
                                             <p>REVOFRP2</p>
                                         </label>
                                     </div>
                                     <label className="field">
-                                        <span className="field__label" for="address">IBAN</span>
+                                        <span className="field__label">IBAN</span>
                                         <p>FR21 7594 3854 0584 1553 5741 582</p>
                                     </label>
                                     
