@@ -20,7 +20,7 @@ import {ProdDesc} from "../../../components/Prod_desc/ProductDescription"
 
 const Product: NextPage<any> = ({ params }: { params: { Id: string } }) => {
     const productId = params.Id
-    const [product, setProduct] = useState<IProduct>({brand: "none", name: "none", price:"none"});
+    const [product, setProduct] = useState<IProduct>({brand: "", name: "", price:""});
     interface IProduct {
         brand: string;
         name: string;
