@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { useEffect, useState } from 'react'
 import { ProductCard } from '../components/Product/ProductCard'
 import { BrandCard } from "../components/Brand/BrandCard"
-import { Test } from './test/Vitrine'
+import { Test } from '../components/Vitrine/Vitrine'
 import infos from "../../public/infos.png"
 import Image from 'next/image'
 
