@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+
+
+
+*{
+    font-family: 'Merriweather',
+        serif;
+    font-size: 300;
+    font-style: italic;
+}
+
+
+.Noob {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: 850px){
+    height: 40vh;
+  }
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  z-index: -1;
+}
+
+.hero {
+  height: 80%;
+  width: 100%;
+  position: relative;
+  background: #fff;
+}
+
+.hero img {
+
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  filter: blur(0px);
+
+
+
+}
+
+.hero h1 {
+  position: absolute;
+  display: flex;
+  max-width: 45%;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+  left: 12vw;
+  font-size: 60px;
+  transform: translate(-20%, -70%);
+  z-index: 3;
+    color: #979797;
+    @media only screen and (max-width: 1330px){
+        font-size: 40px;
+    }
+  @media only screen and (max-width: 850px){
+    font-size: 30px;
+    left: 20vw;
+  }
+}
+
+.hero p {
+    max-width: 40%;
+    position: absolute;
+    top: 30%;
+    left: 7vw;
+    font-size: 20px;
+}
+
+.hero button {
+    position: absolute;
+        top: 60%;
+        left: 15.5vw;
+        font-size: 20px;
+    border: none;
+    background: #979797;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    z-index: 3;
+    width: 200px;
+    font-size: 22px;
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.25;
+}

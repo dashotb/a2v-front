@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 @mixin clearfix {
 
   &:before,
@@ -54,14 +56,20 @@ $white: #ffffff;
 }
 
 .main {
-  background-color: #f7f7f764;
+  background-color: #efefef;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   width: 100%;
-
-
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+  font-size: 300;
+  
+  .hero{
+    width: 80%;
+  }
+  
   .nav {
 
     background-color: rgb(255, 255, 255);
@@ -123,19 +131,21 @@ $white: #ffffff;
 
   .titles {
     
-    margin-top: 8vh;
+    margin-top: 5vh;
   
   }
 
   .vitrine {
+    position: relative;
     background-color: #00ffea7d;
     height: 25vh;
-    width: 91vw;
+
     margin-block-start: 3vh;
     margin-block-end: 9vh;
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 
     @include breakpoint(md) {
       margin-block-start: 7vh;
@@ -270,7 +280,7 @@ $white: #ffffff;
     background-color: #00000053;
     height: 10vh;
     min-height: 10vh;
-    width: 91vw;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -303,7 +313,7 @@ $white: #ffffff;
 
   .container {
     margin-top: 2vh;
-    width: 90vw;
+
       display: flex;
       flex-direction: row;
       overflow-x: auto;
@@ -340,7 +350,7 @@ $white: #ffffff;
   
 
   .slider__wrapper .image__list {
-    width: 91vw;
+
     margin-block-start: 3vh;
     margin-bottom: 20px;
     display: grid;
@@ -368,7 +378,7 @@ $white: #ffffff;
 
   .container .slider__scrollbar {
     height: 24px;
-    width: 90vw;
+
     display: flex;
     align-items: center;
   }
@@ -415,7 +425,7 @@ $white: #ffffff;
 
   .buyorsell{
       height: 50vh;
-      width: 91vw;
+
       margin-block-start: 3vh;
       margin-block-end: 9vh;
       display: flex;
@@ -425,38 +435,55 @@ $white: #ffffff;
   }
 
   .buy{
-    color: #fff;
+    color: #000;
     background: #ffffff;
-    height: 100%;
+    height: 25vw;
     width: 90%;
     padding: 1vw;
 
     &__buy{
-
-      background: #00ffea7d;
+      background-image: url(https://i.ibb.co/fS2CLVD/wtfbro-removebg-preview.png);
+      background-size: cover;
+      background-repeat: no-repeat;
       width: 100%;
       height: 100%;
       padding: 4vw;
+      
+      
+    }
+
+    &__sell {
+      background-image: url(https://i.ibb.co/syww9BV/wtfbropart-2-removebg-preview.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      padding: 4vw;
+
+
     }
 
     &__text{
       width: 40%;
       font-size: 120%;
       @media only screen and (max-width: 1400px){
-        width:100%;
+        font-size:100%;
       }
     }
 
     &__btn{
-
-      justify-content: center;
+      margin-top: 2vw;
+      margin-left: 2vw;
       display: flex;
-      margin-top: 20vh;
+      border: none;
+      padding: 10px;
+      background: #000;
+      border-radius: 5px;
+      color: #fff;
     }
   }
 
   .newsletter{
-    width: 91vw;
     margin-block-start: 3vh;
     margin-block-end: 9vh;
     display: flex;

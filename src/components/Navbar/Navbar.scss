@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 @mixin breakpoint($point) {
     @if $point == md {
@@ -8,7 +8,8 @@
         }
     }
 }
-        
+    .many{
+        font-family: 'Merriweather', serif;
         .header {
             z-index: 1;
             top: 0;
@@ -33,6 +34,7 @@
                 justify-content: space-between;
                 position: relative;
                 z-index: 100;
+                width: 80%;
         
                 &__logo {
                     position: inherit;
@@ -313,13 +315,13 @@
                     &__list {
                         align-items: center;
                         padding-top: 1rem;
-
+                        width: 80%;
                         padding-right: 2rem;
                         padding-left: 2rem;
                         margin: 0;
                         display: none;
                         justify-content: space-between;
-                        margin-inline-start: 3vw;
+                        margin-inline-start: 10vw;
                         margin-inline-end: 3vw;
                         
                         @include breakpoint(md) {
@@ -389,6 +391,7 @@
                     width: 33.33%;
                     padding: 10px;
                     background-color: #ffffff;
+                    border-right: 1px solid #a3a3a37c;
 
                 }
         
@@ -400,6 +403,7 @@
                     text-decoration: none;
                     display: block;
                     text-align: left;
+                    width: 10vw;
                 }
                 .column h4 {
                     padding: 16px;
@@ -409,7 +413,13 @@
                 .column a:hover {
                     color: #00ffea;
                 }
-        
+
+
+                .column-grid {
+                    display: grid;
+                    grid-template-columns: 10vw 10vw ;
+                }
+                
                 /* Clear floats after the columns */
                 .row:after {
                     content: "";
@@ -420,3 +430,4 @@
                 .subline {
                     border-bottom:1px solid #000 ;
                 }
+    }
