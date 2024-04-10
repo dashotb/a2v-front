@@ -42,6 +42,16 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     color: #000;
 
 }
+
+.Logo p{
+    color: black;
+    @media only screen and (max-width: 767px){
+        width: 28vw;
+    }
+    @media only screen and (max-width: 400px) {
+        width: 30vw;
+    }
+}
 .ImgWrap{
     display: flex;
     width: 15vw;
@@ -66,11 +76,13 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .col h4{
+    color: black;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
 
 .col a{
+    color: black;
     margin-bottom: 10px;
 }
 
@@ -80,6 +92,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 .Contact{
     padding: 30px;
+    color: black;
     @media only screen and (max-width: 1000px) {
             padding: 0;
             width: 100%;

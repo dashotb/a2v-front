@@ -68,6 +68,10 @@ $white: #ffffff;
   
   .hero{
     width: 80%;
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
   
   .nav {
@@ -132,7 +136,9 @@ $white: #ffffff;
   .titles {
     
     margin-top: 5vh;
-  
+    @media only screen and (max-width: 767px) {
+        margin: 3vw;
+      }
   }
 
   .vitrine {
@@ -424,7 +430,7 @@ $white: #ffffff;
   
 
   .buyorsell{
-      height: 50vh;
+      max-height: 50vh;
 
       margin-block-start: 3vh;
       margin-block-end: 9vh;
@@ -432,6 +438,16 @@ $white: #ffffff;
       flex-direction: row;
       align-items: center;
       gap: 2vw;
+      @media only screen and (max-width: 767px) {
+        flex-direction: column;
+        max-height: none;
+        height: 80vh;
+      }
+      @media only screen and (max-width: 707px) {
+        flex-direction: column;
+        max-height: none;
+        height: 50vh;
+      }
   }
 
   .buy{
@@ -440,6 +456,11 @@ $white: #ffffff;
     height: 25vw;
     width: 90%;
     padding: 1vw;
+
+    @media only screen and (max-width: 767px) {
+      height: 50vh;
+      width: 100%;
+    }
 
     &__buy{
       background-image: url(https://i.ibb.co/fS2CLVD/wtfbro-removebg-preview.png);
@@ -463,23 +484,43 @@ $white: #ffffff;
 
     }
 
+    &__title{
+      width: 50%;
+      font-size: 1.53vw;
+      @media only screen and (max-width: 767px){
+        font-size: 4vw;
+      }
+    }
+
     &__text{
       width: 40%;
-      font-size: 120%;
-      @media only screen and (max-width: 1400px){
-        font-size:100%;
+      font-size: 1vw;
+      @media only screen and (max-width: 767px){
+        font-size: 3vw;
       }
     }
 
     &__btn{
       margin-top: 2vw;
-      margin-left: 2vw;
+      margin-right: 2vw;
       display: flex;
       border: none;
-      padding: 10px;
+      padding: 0.5vw;
       background: #000;
       border-radius: 5px;
       color: #fff;
+      font-size: 1vw;
+      @media only screen and (max-width: 767px) {
+        margin: 0;
+        font-size: 3vw;
+        padding: 1.5vw;
+      }
+
+      &__wrap{
+        width: 50%;
+        display: flex;
+        
+      }
     }
   }
 

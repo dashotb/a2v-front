@@ -34,7 +34,10 @@
                 justify-content: space-between;
                 position: relative;
                 z-index: 100;
-                width: 80%;
+                width: 100%;
+                @include breakpoint(md){
+                    width: 80%;
+                }
         
                 &__logo {
                     position: inherit;

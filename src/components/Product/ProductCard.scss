@@ -23,7 +23,7 @@
     max-width: 20vw;
     max-height: 50rem;
     transition: 0.2s;
-    
+    min-width: 100px;
 }
 
 .productCard{
@@ -33,6 +33,7 @@
     max-width: 20vw;
     max-height: 50rem;
     transition: 0.2s;
+    min-width: 100px;
     
 }
 
@@ -54,7 +55,7 @@
 .productName {
     margin: 0.4rem;
     font-size: 120%;
-
+    color: black;
     @media only screen and (max-width: 850px) {
         font-size: 80%;
     }
@@ -64,6 +65,7 @@
     width: 20vw;
     max-width: 280px;
     position: absolute;
+    min-width: 100px;
     
 }
 
@@ -73,16 +75,19 @@
     width: 20vw;
     max-width: 280px;
     position: relative;
+    min-width: 100px;
 }
 
 .productBrand {
     margin-left: 0.4rem;
+    color: black;
     @media only screen and (max-width: 850px) {
             font-size: 80%;
         }
 }
 
 .productPrice {
+    color: black;
     @media only screen and (max-width: 850px) {
             font-size: 60%;
         }

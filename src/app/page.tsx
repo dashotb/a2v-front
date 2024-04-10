@@ -27,7 +27,7 @@ export default function Home() {
 
       <section className={styles.hero}>
           
-            <h1 className={styles.title} id='#'>Nouveautés</h1>
+            <h1 className={styles.titles} id='#'>Nouveautés</h1>
             <div className={styles.container}>
               {products.map(products => (
                 <ProductCard
@@ -57,17 +57,17 @@ export default function Home() {
               <div className={styles.buy}>
                   
                 <div className={styles.buy__buy}>
-                  <h2>Qui sommes-nous ? <br /><br /></h2>
+                <h2 className={styles.buy__title}>Qui sommes-nous ? <br /><br /></h2>
                   <p className={styles.buy__text}>Apprenez-en plus sur A2V.com, <br /> la marketplace française du luxe neuf et d'occasion <br /> <br /></p>
-                  <div>
+                  <div className={styles.buy__btn__wrap}>
                   <button className={styles.buy__btn}>En savoir plus</button>
                   </div>
                 </div>
               </div>
               <div className={styles.buy}>
                 <div className={styles.buy__sell}>
-                  <h2>Vendre un article <br /> <br /></h2>
-                  <p className={styles.buy__text}>Voir les avantages et les conditions de ventes d'articles sur A2V.com</p>
+                <h2 className={styles.buy__title}>Vendre un article <br /> <br /></h2>
+                <p className={styles.buy__text}>Voir les avantages et les conditions de ventes d'articles sur A2V.com <br /> <br /></p>
                 <button className={styles.buy__btn}>En savoir plus</button>
                 </div>
               </div>
