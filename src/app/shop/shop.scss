@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 *{
     box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+        font-style: italic;
+        font-size: 300;
 }
 
 .container{
     display: flex;
     flex-direction: column;
-
 }
 
 .title_page {
@@ -15,24 +18,57 @@
     height: 6vh;
     box-shadow: 0 20px 30px -8px rgba(38, 38, 38, .1);
     text-align: center;
+    @media only screen and (max-width: 1000px){
+        font-size: 2vw;
+    }
+    @media only screen and (max-width: 767px) {
+        font-size: 2vw;
+        
+    }
 }
 
 .title_page_1 {
     font-size: 200%;
-
+    @media only screen and (max-width: 767px) {
+        position: relative;
+            top: 20%;
+        }
 }
 
 .product-view--sort {
+    width: 100vw;
     flex: 1 1 0%;
     display: flex;
     flex-direction: row;
     height: 90vh;
     flex-wrap: wrap;
+    
 }
 
 .main-product {
     flex: 1 1 0%;
+    width: 100vw;
     
+}
+
+.uncover {
+    display: none;
+    width: 100vw;
+    background: #000000;
+    gap: 1px;
+    @media only screen and (max-width: 767px) {
+        display: flex;
+    }
+}
+
+.uncover button{
+    margin-top: 1px;
+    width: 50%;
+    border: none;
+    background: #fff;
+    height: 10vw;
+    font-size: 3vw;
+
 }
 
 .filter {
@@ -44,6 +80,9 @@
     position: sticky;
     top: 10vh;
     background: #efefef;
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 .sort {
@@ -57,12 +96,24 @@
 
     margin-left: 3vw;
     margin-top: 5vh;
+
+    @media only screen and (max-width: 767px){
+        display: none;
+    }
 }
 
 .page_nav {
+
     margin-top: 5vh;
     margin-right: 3vw;
     color: #000000;
+    @media only screen and (max-width: 767px) {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            margin-top: 3vh;
+            margin-right: 0;
+        }
 }
 
 .postform {

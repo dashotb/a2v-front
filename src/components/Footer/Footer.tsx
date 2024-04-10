@@ -57,8 +57,8 @@ export default function Footer() {
             <div className="Contact">
                 <div className="col">
                     <h4>Nous contacter</h4>
-                    <a href="">+33 7 60 78 66 36</a>
-                    <a href="">contact@a2v.com</a>
+                    <p>+33 7 60 78 66 36</p>
+                    <p>contact@a2v.com</p>
                 </div>
             </div>
         </footer>

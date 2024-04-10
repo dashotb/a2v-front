@@ -35,9 +35,11 @@
                 position: relative;
                 z-index: 100;
                 width: 100%;
-                @include breakpoint(md){
-                    width: 80%;
-                }
+                @media only screen and (min-width: 880px) {
+                        width: 80%;
+                        
+                    }
+                
         
                 &__logo {
                     position: inherit;
@@ -326,6 +328,11 @@
                         justify-content: space-between;
                         margin-inline-start: 10vw;
                         margin-inline-end: 3vw;
+
+                        @media only screen and (max-width: 880px) {
+                            width: 100%;
+                            margin-inline-start: 0;
+                        }
                         
                         @include breakpoint(md) {
                             display: flex;

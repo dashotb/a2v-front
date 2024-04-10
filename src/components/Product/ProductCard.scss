@@ -3,11 +3,15 @@
 .products{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.5vw;
-
-    @media only screen and (min-width: 1400px){
+    
+    @media only screen and (min-width: 1631px){
         grid-template-columns: repeat(4, 1fr);
     }
+
+    @media only screen and (max-width: 400px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
 }
 
 .productList{
@@ -24,6 +28,9 @@
     max-height: 50rem;
     transition: 0.2s;
     min-width: 100px;
+    @media only screen and (max-width: 400px) {
+            min-width: 130px;
+        }
 }
 
 .productCard{
@@ -34,6 +41,9 @@
     max-height: 50rem;
     transition: 0.2s;
     min-width: 100px;
+    @media only screen and (max-width: 400px) {
+        min-width: 130px;
+    }
     
 }
 
@@ -66,6 +76,9 @@
     max-width: 280px;
     position: absolute;
     min-width: 100px;
+    @media only screen and (max-width: 400px) {
+            min-width: 130px;
+        }
     
 }
 
@@ -76,6 +89,9 @@
     max-width: 280px;
     position: relative;
     min-width: 100px;
+    @media only screen and (max-width: 400px) {
+            min-width: 130px;
+        }
 }
 
 .productBrand {

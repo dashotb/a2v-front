@@ -79,14 +79,33 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     color: black;
     text-transform: uppercase;
     margin-bottom: 15px;
+    @media only screen and (max-width: 441px) {
+            font-size: 4vw;
+        }
 }
 
 .col a{
     color: black;
     margin-bottom: 10px;
+    @media only screen and (max-width: 441px){
+        width: 20vw;
+        font-size: 2.7vw;
+    }
 }
 
 .col a:hover{
+    color: #00ffea;
+}
+
+.col p {
+    color: black;
+    margin-bottom: 10px;
+    @media only screen and (max-width: 441px) {
+            font-size: 3vw;
+        }
+}
+
+.col p:hover {
     color: #00ffea;
 }
 

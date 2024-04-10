@@ -33,6 +33,14 @@ const Shop:NextPage = () => {
                         <FilterSection/>
                     </div>
                     <div className="main-product">
+                        <div className="uncover">
+                            <button>
+                                Filtres
+                            </button>
+                            <button>
+                                Trier
+                            </button>
+                        </div>
                         <div className="sort">
                             <div className="sort_by">
                                 <a className="widget-title-original">Trier par </a>
