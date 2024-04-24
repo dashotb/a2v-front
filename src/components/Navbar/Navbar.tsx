@@ -236,7 +236,7 @@ export const Navbar:React.FC = () => {
             </div>
           </div>
           <div className="dropdown">
-            <button className="dropbtn">Accessoires
+            <button className="dropbtn"><a href="/shop/accesories">Accessoires</a>
               <i className="fa fa-caret-down"></i>
             </button>
             <div className="dropdown-content">

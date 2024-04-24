@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, redirect } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import "./styles.scss"
 
@@ -35,7 +35,7 @@ export const LoginForm = () => {
 
             console.log(res);
             if (!res?.error) {
-                router.push(callbackUrl);
+                redirect("/account");
             } else {
                 setError("Email ou Mot de passe Invalide");
             }

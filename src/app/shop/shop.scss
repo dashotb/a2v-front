@@ -116,9 +116,75 @@
         }
 }
 
+.page_nav a{
+    padding: 0.5vw;
+}
+#selectour{
+    text-decoration: underline;
+}
+
+
 .postform {
     background: transparent;
     border: none;
     font-size: 1rem;
     max-height: 50px;
+}
+
+.products_notfound{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 2vw;
+    @media only screen and (max-width: 767px) {
+        height: 30vh;
+        font-size: 3.5vw;
+    }
+}
+
+//Filtres
+.FilterSection {
+
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-color: rgb(182, 181, 181) #efefef;
+    scrollbar-width: thin;
+}
+
+.title {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.brands {
+    margin-left: 1rem;
+    margin-top: 3rem;
+    margin: 1rem;
+    border: none;
+    height: 250px;
+    border-bottom: 1px solid rgb(182, 181, 181);
+}
+
+.brands_list {
+    height: 150px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-color: rgb(182, 181, 181) #efefef;
+}
+
+
+.input {
+    margin: 0.4rem;
+}
+
+.input_search {
+    margin: 0.4rem;
+    width: 13vw;
+    height: 30px;
+    border: none;
+    background: #f8f8f8;
+    border-bottom: 1px dashed rgb(182, 181, 181);
 }

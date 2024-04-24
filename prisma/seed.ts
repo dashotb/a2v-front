@@ -3,20 +3,17 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    const products = await prisma.product.update({
-        where: {
-            id: "2310c567-d7db-41d4-a3e8-fe67ac9e88a1"
-        },
-        data:
-        {
-            stripeId: "prod_PlPvdFRvOeNvBl"
-        },
-
-
-
+    const brands = await prisma.brand.createMany({
+        data: [
+            {
+                name: "Hermes"
+            },
+            {name: "Louis-Vuitton"},
+            {name: "Cartier"}
+        ]
 
     })
-    console.log(products)
+    console.log(brands)
 }
 
 main()
