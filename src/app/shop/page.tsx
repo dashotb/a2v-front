@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const Shop:NextPage = () => {
     
-    //fetch produits/articles
+    //fetch produits/articles + filtres
     const [products, setProducts] = useState<any[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<any[]>([])
     const getProducts = async () => {
@@ -23,16 +23,38 @@ const Shop:NextPage = () => {
         setFilteredProducts(response)
         console.log(response)
     }
-    useEffect(() => {
-        getProducts()
-    }, [])
     const [brands, setBrands] = useState<any[]>([]);
     const getBrands = async () => {
         const response = await fetch(`/api/brands`).then((response) => response.json());
         setBrands(response);
     }
+    const [sizes, setSizes] = useState<any[]>([]);
+    const getSizes = async () => {
+        const response = await fetch(`/api/size`).then((response) => response.json());
+        setSizes(response);
+    }
+    const [colors, setColors] = useState<any[]>([]);
+    const getColors = async () => {
+        const response = await fetch(`/api/colors`).then((response) => response.json());
+        setColors(response);
+    }
+    const [materials, setMaterials] = useState<any[]>([]);
+    const getMaterials = async () => {
+        const response = await fetch(`/api/materials`).then((response) => response.json());
+        setMaterials(response);
+    }
+    const [states, setStates] = useState<any[]>([]);
+    const getStates = async () => {
+        const response = await fetch(`/api/states`).then((response) => response.json());
+        setStates(response);
+    }
     useEffect(() => {
-        getBrands()
+        getBrands(),
+        getSizes(),
+        getColors(),
+        getMaterials(),
+        getStates(),
+        getProducts()
     }, [])
 
     //filtrer les articles
@@ -153,54 +175,11 @@ const Shop:NextPage = () => {
                             <h4 className='title'>Tailles</h4>
                             <input type='searchbox' className='input_search' placeholder="Rechercher" />
                             <div className='brands_list'>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
+                                {sizes.map((size, id) => (
+                                    <div>
+                                        <label htmlFor={size.name} key={id}><input className="input" type="checkbox" id={size.name} name={size.name} value={size.name} onClick={() => handleFilterButtonClick(size.name)} />{size.name}</label>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -208,54 +187,11 @@ const Shop:NextPage = () => {
                             <h4 className='title'>Coloris</h4>
                             <input type='searchbox' className='input_search' placeholder="Rechercher" />
                             <div className='brands_list'>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
+                                {colors.map((color, id) => (
+                                    <div>
+                                        <label htmlFor={color.name} key={id}><input className="input" type="checkbox" id={color.name} name={color.name} value={color.name} onClick={() => handleFilterButtonClick(color.name)} />{color.name}</label>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -263,54 +199,11 @@ const Shop:NextPage = () => {
                             <h4 className='title'>Matieres</h4>
                             <input type='searchbox' className='input_search' placeholder="Rechercher" />
                             <div className='brands_list'>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
+                                {materials.map((material, id) => (
+                                    <div>
+                                        <label htmlFor={material.name} key={id}><input className="input" type="checkbox" id={material.name} name={material.name} value={material.name} onClick={() => handleFilterButtonClick(material.name)} />{material.name}</label>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -318,54 +211,11 @@ const Shop:NextPage = () => {
                             <h4 className='title'>Etat</h4>
                             <input type='searchbox' className='input_search' placeholder="Rechercher" />
                             <div className='brands_list'>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
+                                {states.map((state, id) => (
+                                    <div>
+                                        <label htmlFor={state.name} key={id}><input className="input" type="checkbox" id={state.name} name={state.name} value={state.name} onClick={() => handleFilterButtonClick(state.name)} />{state.name}</label>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 

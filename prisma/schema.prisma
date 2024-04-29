@@ -40,6 +40,8 @@ model Product {
   valide    Boolean @default(false)
   authorId  String
   stripeId  String?
+  colors    String[]
+  matieres  String[]
 }
 
 model Brand {
@@ -53,4 +55,25 @@ model Category {
   id      String   @id @default(uuid())
   name    String
   subcategory String[]
+}
+
+model Size {
+  id      String   @id @default(uuid())
+  name    String
+  Category String[]
+}
+
+model Color {
+  id      String   @id @default(uuid())
+  name    String
+}
+
+model Material {
+  id      String   @id @default(uuid())
+  name    String
+}
+
+model State {
+  id      String   @id @default(uuid())
+  name    String
 }

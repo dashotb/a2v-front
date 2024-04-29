@@ -3,14 +3,10 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    const brands = await prisma.brand.createMany({
-        data: [
-            {
-                name: "Hermes"
+    const brands = await prisma.size.delete({
+        where: {
+            id: "4da78cd3-b427-445f-bf04-8b414b1728d5",
             },
-            {name: "Louis-Vuitton"},
-            {name: "Cartier"}
-        ]
 
     })
     console.log(brands)
