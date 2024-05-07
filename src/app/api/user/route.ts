@@ -6,7 +6,7 @@ import { stripe } from "../../../lib/stripe";
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { email, password } = body;
+        const { email, name, password } = body;
         const stripeCustomer = await stripe.customers.create({
             email
         });
@@ -14,6 +14,7 @@ export async function POST(req: Request) {
         const newUser = await prisma.user.create({
             data: {
                 email,
+                name,
                 password: hashedPass,
                 stripeCustomerId: stripeCustomer.id,
             }

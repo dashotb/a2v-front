@@ -17,6 +17,7 @@ const Shop:NextPage = () => {
     //fetch produits/articles + filtres
     const [products, setProducts] = useState<any[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<any[]>([])
+    const [currentProducts, setCurrentProducts] = useState<any[]>([])
     const getProducts = async () => {
         const response = await fetch(`/api/products`).then((response) => response.json());
         setProducts(response);
@@ -67,29 +68,309 @@ const Shop:NextPage = () => {
             setSelectedFilters([...selectedFilters, selectedCategory]);
         }
     };
+    const [selectedFiltersSize, setSelectedFiltersSize] = useState<any[]>([]);
+    const handleFilterSizeButtonClick = (selectedCategory: any) => {
+        if (selectedFiltersSize.includes(selectedCategory)) {
+            let sizes: any = selectedFiltersSize.filter((el) => el !== selectedCategory);
+            setSelectedFiltersSize(sizes);
+        } else {
+            setSelectedFiltersSize([...selectedFiltersSize, selectedCategory]);
+        }
+    };
+    const [selectedFiltersColor, setSelectedFiltersColor] = useState<any[]>([]);
+    const handleFilterColorButtonClick = (selectedCategory: any) => {
+        if (selectedFiltersColor.includes(selectedCategory)) {
+            let colors: any = selectedFiltersColor.filter((el) => el !== selectedCategory);
+            setSelectedFiltersColor(colors);
+        } else {
+            setSelectedFiltersColor([...selectedFiltersColor, selectedCategory]);
+        }
+    };
+    const [selectedFiltersMaterial, setSelectedFiltersMaterial] = useState<any[]>([]);
+    const handleFilterMaterialButtonClick = (selectedCategory: any) => {
+        if (selectedFiltersMaterial.includes(selectedCategory)) {
+            let materials: any = selectedFiltersMaterial.filter((el) => el !== selectedCategory);
+            setSelectedFiltersMaterial(materials);
+        } else {
+            setSelectedFiltersMaterial([...selectedFiltersMaterial, selectedCategory]);
+        }
+    };
+    const [selectedFiltersState, setSelectedFiltersState] = useState<any[]>([]);
+    const handleFilterStateButtonClick = (selectedCategory: any) => {
+        if (selectedFiltersState.includes(selectedCategory)) {
+            let states: any = selectedFiltersState.filter((el) => el !== selectedCategory);
+            setSelectedFiltersState(states);
+        } else {
+            setSelectedFiltersState([...selectedFiltersState, selectedCategory]);
+        }
+    };
+    const [lowerPrice, setLowerPrice] = useState(0)
+    const handleFilterLowerPrice = (e: any) => {
+        if (Number.isNaN(parseInt(e))){
+            setLowerPrice(0)
+        }
+        else {
+            setLowerPrice(parseInt(e))
+        }
+    }
+    const [higherPrice, setHigherPrice] = useState(1000000)
+    const handleFilterHigherPrice = (e: any) => {
+        if (Number.isNaN(parseInt(e))) {
+            setHigherPrice(1000000)
+        }
+        else {
+           setHigherPrice(parseInt(e))
+        }
+    }
     useEffect(() => {
         filterItems();
-    }, [selectedFilters]);
+    }, [selectedFilters, selectedFiltersSize, selectedFiltersColor, selectedFiltersMaterial, selectedFiltersState, lowerPrice, higherPrice]);
     const filterItems = () => {
+            
+
         if (selectedFilters.length > 0) {
             let tempItems = selectedFilters.map((selectedCategory) => {
-                let temp = products.filter((product) => product.brand === selectedCategory);
+                let temp = filteredProducts.filter((product) => product.brand === selectedCategory && lowerPrice <= product.price && higherPrice >= product.price);
                 return temp;
             });
             setFilteredProducts(tempItems.flat());
-        } else {
-            setFilteredProducts([...products]);
+            if (selectedFiltersSize.length > 0) {
+                let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.size === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersColor.length > 0) {
+                    let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.color === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                    if (selectedFiltersMaterial.length > 0) {
+                        let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                            let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                            return temp;
+                        });
+                        setFilteredProducts(tempItems.flat());
+                        if (selectedFiltersState.length > 0) {
+                            let tempItems = selectedFiltersState.map((selectedCategory) => {
+                                let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                                return temp;
+                            });
+                            setFilteredProducts(tempItems.flat());
+                        }
+                    }
+                    else if (selectedFiltersState.length > 0) {
+                        let tempItems = selectedFiltersState.map((selectedCategory) => {
+                            let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                            return temp;
+                        });
+                        setFilteredProducts(tempItems.flat());
+                    }
+                }
+                else if (selectedFiltersMaterial.length > 0) {
+                    let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                    if (selectedFiltersState.length > 0) {
+                        let tempItems = selectedFiltersState.map((selectedCategory) => {
+                            let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                            return temp;
+                        });
+                        setFilteredProducts(tempItems.flat());
+                    }
+                }
+                else if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersColor.length > 0) {
+                let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.color === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersMaterial.length > 0) {
+                    let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                    if (selectedFiltersState.length > 0) {
+                        let tempItems = selectedFiltersState.map((selectedCategory) => {
+                            let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                            return temp;
+                        });
+                        setFilteredProducts(tempItems.flat());
+                    }
+                }
+                else if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersMaterial.length > 0) {
+                let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersState.length > 0) {
+                let tempItems = selectedFiltersState.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+            }
         }
-    };    
+        else if (selectedFiltersSize.length > 0) {
+            let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                let temp = filteredProducts.filter((product) => product.size === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                return temp;
+            });
+            setFilteredProducts(tempItems.flat());
+            if (selectedFiltersColor.length > 0) {
+                let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.color === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersMaterial.length > 0) {
+                    let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                    if (selectedFiltersState.length > 0) {
+                        let tempItems = selectedFiltersState.map((selectedCategory) => {
+                            let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                            return temp;
+                        });
+                        setFilteredProducts(tempItems.flat());
+                    }
+                }
+                else if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersMaterial.length > 0) {
+                let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersState.length > 0) {
+                let tempItems = selectedFiltersState.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+            }
+        }
+        else if (selectedFiltersColor.length > 0) {
+            let tempItems = selectedFiltersSize.map((selectedCategory) => {
+                let temp = filteredProducts.filter((product) => product.color === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                return temp;
+            });
+            setFilteredProducts(tempItems.flat());
+            if (selectedFiltersMaterial.length > 0) {
+                let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+                if (selectedFiltersState.length > 0) {
+                    let tempItems = selectedFiltersState.map((selectedCategory) => {
+                        let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                        return temp;
+                    });
+                    setFilteredProducts(tempItems.flat());
+                }
+            }
+            else if (selectedFiltersState.length > 0) {
+                let tempItems = selectedFiltersState.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+            }
+        }
+        else if (selectedFiltersMaterial.length > 0) {
+            let tempItems = selectedFiltersMaterial.map((selectedCategory) => {
+                let temp = filteredProducts.filter((product) => product.material === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                return temp;
+            });
+            setFilteredProducts(tempItems.flat());
+            if (selectedFiltersState.length > 0) {
+                let tempItems = selectedFiltersState.map((selectedCategory) => {
+                    let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                    return temp;
+                });
+                setFilteredProducts(tempItems.flat());
+            }
+        }
+        else if (selectedFiltersState.length > 0) {
+            let tempItems = selectedFiltersState.map((selectedCategory) => {
+                let temp = filteredProducts.filter((product) => product.state === selectedCategory.toLowerCase() && lowerPrice <= product.price && higherPrice >= product.price);
+                return temp;
+            });
+            setFilteredProducts(tempItems.flat());
+        }
+        else {
+            setFilteredProducts([...products.filter((product) => lowerPrice <= product.price && higherPrice >= product.price)]);
+        }
+    };
+    
+    // Trier les articles
+    const Sort = async (sorting: any) => {
+        if (sorting == "date"){
+            setFilteredProducts(filteredProducts.sort((a, b) => parseFloat(a.createdAt) - parseFloat(b.createdAt)).flat())
+        }
+        if(sorting == "ascending"){
+            setFilteredProducts(filteredProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)).flat())
+        }
+        if (sorting == "descending") {
+            setFilteredProducts(filteredProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price)).flat())
+        }
+    }
 
-    // Choix du numéro de page
+    //Pagination
     const end = Math.floor(products.length / 48)
     var list = []
     var rest = []
 
     var page_nav = <div></div>
     
-    if (products.length > 0) {
+    if (filteredProducts.length > 0) {
         var render = <div className="products">
             {
                 filteredProducts.map((products, i) => {
@@ -177,7 +458,7 @@ const Shop:NextPage = () => {
                             <div className='brands_list'>
                                 {sizes.map((size, id) => (
                                     <div>
-                                        <label htmlFor={size.name} key={id}><input className="input" type="checkbox" id={size.name} name={size.name} value={size.name} onClick={() => handleFilterButtonClick(size.name)} />{size.name}</label>
+                                        <label htmlFor={size.name} key={id}><input className="input" type="checkbox" id={size.name} name={size.name} value={size.name} onClick={() => handleFilterSizeButtonClick(size.name)} />{size.name}</label>
                                     </div>
                                 ))}
                             </div>
@@ -189,7 +470,7 @@ const Shop:NextPage = () => {
                             <div className='brands_list'>
                                 {colors.map((color, id) => (
                                     <div>
-                                        <label htmlFor={color.name} key={id}><input className="input" type="checkbox" id={color.name} name={color.name} value={color.name} onClick={() => handleFilterButtonClick(color.name)} />{color.name}</label>
+                                        <label htmlFor={color.name} key={id}><input className="input" type="checkbox" id={color.name} name={color.name} value={color.name} onClick={() => handleFilterColorButtonClick(color.name)} />{color.name}</label>
                                     </div>
                                 ))}
                             </div>
@@ -201,7 +482,7 @@ const Shop:NextPage = () => {
                             <div className='brands_list'>
                                 {materials.map((material, id) => (
                                     <div>
-                                        <label htmlFor={material.name} key={id}><input className="input" type="checkbox" id={material.name} name={material.name} value={material.name} onClick={() => handleFilterButtonClick(material.name)} />{material.name}</label>
+                                        <label htmlFor={material.name} key={id}><input className="input" type="checkbox" id={material.name} name={material.name} value={material.name} onClick={() => handleFilterMaterialButtonClick(material.name)} />{material.name}</label>
                                     </div>
                                 ))}
                             </div>
@@ -213,7 +494,7 @@ const Shop:NextPage = () => {
                             <div className='brands_list'>
                                 {states.map((state, id) => (
                                     <div>
-                                        <label htmlFor={state.name} key={id}><input className="input" type="checkbox" id={state.name} name={state.name} value={state.name} onClick={() => handleFilterButtonClick(state.name)} />{state.name}</label>
+                                        <label htmlFor={state.name} key={id}><input className="input" type="checkbox" id={state.name} name={state.name} value={state.name} onClick={() => handleFilterStateButtonClick(state.name)} />{state.name}</label>
                                     </div>
                                 ))}
                             </div>
@@ -221,55 +502,12 @@ const Shop:NextPage = () => {
 
                         <div className='brands'>
                             <h4 className='title'>Prix</h4>
-                            <input type='searchbox' className='input_search' placeholder="Rechercher" />
                             <div className='brands_list'>
                                 <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
+                                    <label htmlFor="lower-price">Prix min:<input className="input" type="number" id="lower-price" onChange={(e) => handleFilterLowerPrice(e.target.value)} />£</label>
                                 </div>
                                 <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="scales" name="scales" />
-                                    <label htmlFor="scales">Scales</label>
-                                </div>
-                                <div>
-                                    <input className="input" type="checkbox" id="horns" name="horns" />
-                                    <label htmlFor="horns">Horns</label>
+                                    <label htmlFor="higher-price">Prix max:<input className="input" type="number" id="higher-price" onChange={(e) => handleFilterHigherPrice(parseInt(e.target.value))} />£</label>
                                 </div>
                             </div>
                         </div>
@@ -287,11 +525,11 @@ const Shop:NextPage = () => {
                         <div className="sort">
                             <div className="sort_by">
                                 <a className="widget-title-original">Trier par </a>
-                                <select name="cat" id="original" className="postform">
+                                <select name="cat" id="original" className="postform" onChange={e => Sort(e.target.value)}>
                                     <option value="-1">Pertinence</option>
                                     <option className="level-0" value="23">Date</option>
-                                    <option className="level-0" value="29">Prix croissant</option>
-                                    <option className="level-0" value="26">Prix decroissant</option>
+                                    <option className="level-0" value="ascending">Prix croissant</option>
+                                    <option className="level-0" value="descending">Prix decroissant</option>
                                 </select>
                             </div>
                             {page_nav}

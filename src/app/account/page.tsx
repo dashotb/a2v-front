@@ -9,12 +9,17 @@ import IconBoy from "../../../public/IconBoy.png"
 import Image from "next/image";
 import { prisma } from "../../lib/prisma";
 import { ProductCard } from "../../components/Product/ProductCard";
+import { useEffect, useState } from "react";
 
 
 const Account:NextPage = async () => {
- 
     const session = await getServerSession(authOptions)
     if (session){
+        const response = await prisma.user.findUnique({
+            where: {
+                id: session.user.id
+            }
+        });
         return(
             <main className="main">
                 <div className="display">
@@ -32,20 +37,21 @@ const Account:NextPage = async () => {
                                         0
                                         <p>articles</p>
                                     </div>
-                                    <div className="count">
+                                    {/* Pour plus tard */}
+                                    {/* <div className="count">
                                         0
                                         <p>followers</p>
                                     </div>
                                     <div className="count">
                                         0
                                         <p>suivi</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className="user_name_desc">
-                                <h3 className="user_name">Seller Name</h3>
+                                <h3 className="user_name">{response?.name}</h3>
                                 <div className="user_desc">
-                                    <p className="user_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut obcaecati labore accusantium eius architecto pariatur sapiente, praesentium nemo cum. Dolores nam doloremque illo fuga sequi esse eius? Amet, repudiandae quae.</p>
+                                    <p className="user_description">{response?.description}</p>
                                     <p>Pays: France</p>
                                 </div>
                             </div>

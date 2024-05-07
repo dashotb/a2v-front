@@ -1,47 +1,60 @@
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.5vw;
 
-    @media only screen and (min-width: 1400px) {
+    @media only screen and (min-width: 1631px) {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    @media only screen and (max-width: 400px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
-.brandList {
+.productList {
     display: flex;
     justify-content: space-evenly;
 
 }
 
-.brandCard2 {
+.productCard2 {
     position: relative;
     margin: 1rem;
     flex: 1 0 25rem;
     max-width: 20vw;
     max-height: 50rem;
     transition: 0.2s;
+    min-width: 100px;
 
+    @media only screen and (max-width: 400px) {
+        min-width: 130px;
+    }
 }
 
-.brandCard {
+.productCard {
     position: relative;
     margin: 1rem;
     flex: 1 0 25rem;
     max-width: 20vw;
     max-height: 50rem;
     transition: 0.2s;
+    min-width: 100px;
+
+    @media only screen and (max-width: 400px) {
+        min-width: 130px;
+    }
 
 }
 
-.brandCard>img:last-of-type {
+.productCard>img:last-of-type {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
     -moz-transition: opacity 0.5s ease-in-out;
     -webkit-transition: opacity 0.5s ease-in-out;
 }
 
-.brandCard:hover>img:last-of-type {
+.productCard:hover>img:last-of-type {
     opacity: 0;
 }
 
@@ -49,28 +62,58 @@
 
 
 
-.BrandName {
-    text-align: center;
+.brandName {
+    margin: 0.4rem;
     font-size: 120%;
+    color: black;
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (max-width: 850px) {
+        font-size: 80%;
+    }
 }
 
-.brandImage {
+.productImage {
     width: 20vw;
     max-width: 280px;
     position: absolute;
+    min-width: 100px;
+
+    @media only screen and (max-width: 400px) {
+        min-width: 130px;
+    }
 
 }
 
 
 
-.brandImage2 {
+.productImage2 {
     width: 20vw;
     max-width: 280px;
     position: relative;
+    min-width: 100px;
+
+    @media only screen and (max-width: 400px) {
+        min-width: 130px;
+    }
 }
 
-.brandBrand {
-    text-align: center;
+.productBrand {
+    margin-left: 0.4rem;
+    color: black;
+
+    @media only screen and (max-width: 850px) {
+        font-size: 80%;
+    }
+}
+
+.productPrice {
+    color: black;
+
+    @media only screen and (max-width: 850px) {
+        font-size: 60%;
+    }
 }
 
 .displayStack__1 {

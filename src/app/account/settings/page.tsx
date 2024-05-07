@@ -1,22 +1,22 @@
 
 import { NextPage } from "next";
 import "./style.scss"
-import { Navbar } from "../../../components/Navbar/Navbar";
-import Link from "next/link";
 import { authOptions } from "../../../lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import IconBoy from "../../../../public/IconBoy.png"
-import Image from "next/image";
 import { prisma } from "../../../lib/prisma";
 import { ProductCard } from "../../../components/Product/ProductCard";
 
 
 
 const Settings: NextPage = async () => {
-
     const session = await getServerSession(authOptions)
     if (session) {
+        const response = await prisma.user.findUnique({
+            where: {
+                id: session.user.id
+            }
+        });
         return (
             <main className="main">
                 <div className="display">
@@ -36,16 +36,16 @@ const Settings: NextPage = async () => {
                                     <div className="fields fields--2">
                                         <label className="field">
                                             <span className="field__label" >Nom</span>
-                                            <p>Seller Name</p>
+                                            {response?.name}
                                         </label>
                                         <label className="field">
                                             <span className="field__label" >Genre</span>
-                                            <p>Homme</p>
+                                            Homme
                                         </label>
                                     </div>
                                     <label className="field">
                                         <span className="field__label" >Email</span>
-                                        <input type="email" className="field__input" placeholder={session.user.email} />
+                                        {session.user.email}
                                     </label>
                                     <label className="field">
                                         <span className="field__label" >Mot de passe</span>
@@ -53,11 +53,11 @@ const Settings: NextPage = async () => {
                                     </label>
                                     <label className="field">
                                         <span className="field__label" >Description</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam eius provident temporibus ducimus et optio nulla fugit, exercitationem sapiente ad sed delectus sequi? Voluptatibus repudiandae accusamus at adipisci eligendi?</p>
+                                        {response?.description}
                                     </label>
                                 </div>
                                 <hr />
-                                
+                                <button className="modify">Modifier</button>
                             </div>
                         </div>
                         <div className="card">
@@ -69,35 +69,35 @@ const Settings: NextPage = async () => {
                                     <div className="fields fields--2">
                                         <label className="field">
                                             <span className="field__label" >Prenom</span>
-                                            <p>John</p>
+                                            {response?.adressprenom}
                                         </label>
                                         <label className="field">
                                             <span className="field__label" >Nom</span>
-                                            <p>Doe</p>
+                                            {response?.adressnom}
                                         </label>
                                     </div>
                                     <label className="field">
                                         <span className="field__label" >Adresse</span>
-                                        <p>3 Av. Henri Montagut</p>
+                                        {response?.adressline}
                                     </label>
                                     <div className="fields fields--3">
                                         <label className="field">
                                             <span className="field__label">Pays</span>
-                                            <p>France</p>
+                                            {response?.adresscountry}
                                         </label>
                                         <label className="field">
                                             <span className="field__label">Code postale</span>
-                                            <p>31800</p>
+                                            {response?.adresspostal}
                                         </label>
                                         <label className="field">
                                             <span className="field__label" >Ville</span>
-                                            <p>Saint Gaudens</p>
+                                            {response?.adresstown}
                                         </label>
                                         
                                     </div>
                                 </div>
                                 <hr/>
-                                    
+                                <button className="modify">Modifier</button>
                             </div>
                         </div>
                         <div className="card">
@@ -111,21 +111,21 @@ const Settings: NextPage = async () => {
                                     <div className="fields fields--2">
                                         <label className="field">
                                             <span className="field__label">Beneficiaire</span>
-                                            <p>Habib Hadjadj</p>
+                                            {response?.beneficiaire}
                                         </label>
                                         <label className="field">
                                             <span className="field__label">BIC</span>
-                                            <p>REVOFRP2</p>
+                                            {response?.bic}
                                         </label>
                                     </div>
                                     <label className="field">
                                         <span className="field__label">IBAN</span>
-                                        <p>FR21 7594 3854 0584 1553 5741 582</p>
+                                        {response?.iban}
                                     </label>
                                     
                                 </div>
                                 <hr />
-                                
+                                <button className="modify">Modifier</button>
                             </div>
                         </div>
                     </div>

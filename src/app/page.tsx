@@ -15,8 +15,16 @@ export default function Home() {
     setProducts(response);
     console.log(response)
   }
+  const [brands, setBrands] = useState<any[]>([]);
+  const getBrands = async () => {
+
+    const response = await fetch(`/api/brands`).then((response) => response.json());
+    setBrands(response);
+    console.log(response)
+  }
   useEffect(() => {
-    getProducts()
+    getProducts(),
+    getBrands()
   }, [])
 
   return (
@@ -42,13 +50,13 @@ export default function Home() {
 
             <h1 className={styles.titles} id='#'>Marques</h1>
             <div className={styles.container}>
-              {products.map(products => (
-                <ProductCard
-                  id={products.id}
-                  image={products.image}
-                  name={products.name}
-                  brand={products.brand}
-                  price={products.price}
+              {brands.map(brands => (
+                <BrandCard
+                  id={brands.id}
+                  image={brands.image}
+                  name={brands.name}
+                  brand={brands.brand}
+                  price={brands.price}
                 />
               ))}
             </div>

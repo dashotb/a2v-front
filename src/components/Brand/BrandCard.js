@@ -4,12 +4,13 @@ import Link from 'next/link'
 
 export function BrandCard(props) {
         return (
-            <div className='brandList'>
-                <Link href="/product/[id]" as={`/product/${props.id}`}>
-                    <div key={props.id} className='brandCard'>
-                        <img src={props.image[0]} alt={props.name} className='brandImage'></img>
+            <div className='productList'>
+                <Link href="/shop/brand/[id]" as={`/shop/brand/${props.name}`}>
+                    <div key={props.id} className='productCard2'>
+
+                        <img src={props.image[0]} alt={props.name} className='productImage2'></img>
                         <div className='brandCard__content'>
-                            <div className='BrandName'>{props.name}</div>
+                            <a className='brandName'>{props.name}</a>
                         </div>
                     </div>
                 </Link>

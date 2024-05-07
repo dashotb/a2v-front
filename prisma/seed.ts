@@ -3,10 +3,13 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    const brands = await prisma.size.delete({
+    const brands = await prisma.product.update({
         where: {
-            id: "4da78cd3-b427-445f-bf04-8b414b1728d5",
-            },
+            id: "2310c567-d7db-41d4-a3e8-fe67ac9e88a1"
+        },
+        data: {
+            size: "xs"
+        }
 
     })
     console.log(brands)

@@ -10,6 +10,7 @@
 }
     .many{
         font-family: 'Merriweather', serif;
+        font-style: italic;
         .header {
             z-index: 1;
             top: 0;
@@ -243,10 +244,65 @@
             }
         }
 
+        .results-wrap{
+            background: white;
+            position: absolute;
+            margin-left: 13.2vw;
+            z-index: 100;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 35%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+        }
 
+        .results-wrap-cols h4{
+            margin: 5px;
+            width: 100%;
+            display: flex;
+            padding-top: 5px;
+            color: #000000;
+            font-style: italic;
+            
+        }
+
+        .results-wrap ul {
+            display: flex;
+            flex-direction: column;
+            height: 20vh;
+            overflow-y: hidden;
+
+        }
+
+        .results-wrap li {
+            
+            margin: 5px;
+            font-size: 80%;
+        }
+
+        .list-item {
+            display: inline-flex;
+            word-wrap: initial;
+            list-style-type: none;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+            text-transform: capitalize;
+            margin-right: 0.5rem;
+        }
+
+
+        .list-item a {
+            text-decoration: none;
+        }
+
+        .list-item a:hover {
+            color: #00ffea;
+            transition: 200ms ease-in;
+        }
 
         .wrap-search{
             position: absolute;
+            display: flex;
+            flex-direction: row;
         }
                 .search-box {
                     width: fit-content;
@@ -292,6 +348,11 @@
                     background-color: transparent;
                     pointer-events: painted;
                 }
+
+                .btn-close{
+                    margin-left: 5vw;
+                    display: flex;
+                }
         
                 .btn-search:focus~.input-search {
 
@@ -300,6 +361,10 @@
                     background-color: transparent;
                     border-bottom: 1px solid #00ffea;
         
+                }
+
+                .btn-search:focus~.btn-close{
+                    
                 }
         
                 .input-search:focus {

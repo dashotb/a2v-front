@@ -34,14 +34,19 @@ model Product {
   name      String
   brand     String
   category  String
+  altcategory String?
   subcategory String?
   price     String
   image     String[]
   valide    Boolean @default(false)
   authorId  String
   stripeId  String?
+  gender    String  @default("undefined")
   colors    String[]
   matieres  String[]
+  mechanism String?
+  createdAt DateTime  @default(now())
+  size      String?
 }
 
 model Brand {

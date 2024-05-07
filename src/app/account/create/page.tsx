@@ -6,6 +6,7 @@ import { redirect, useSearchParams, useRouter } from "next/navigation"
 
 export default function Create() {
     const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
 
     const [loading, setLoading] = useState(false);
@@ -16,7 +17,8 @@ export default function Create() {
     const submitPost = async () => {
         if (name.length > 2 && pass.length > 2) {
             let body = {
-                email: name,
+                email: email,
+                name: name,
                 password: pass
 
             }
@@ -48,10 +50,15 @@ export default function Create() {
                         <h2>Inscription</h2>
 
                         <div className="form">
+                            <div className="inputBox">
+
+                                <input onChange={(e) => setName(e.target.value)} type="text" required /> <i>Nom</i>
+
+                            </div>
 
                             <div className="inputBox">
 
-                                <input onChange={(e) => setName(e.target.value)} type="text" required/> <i>Email</i>
+                                <input onChange={(e) => setEmail(e.target.value)} type="text" required/> <i>Email</i>
 
                             </div>
 
