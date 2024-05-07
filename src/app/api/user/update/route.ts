@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { hash } from "bcrypt"
 import { stripe } from "../../../../lib/stripe";
 
-export async function UPDATE(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: { id: string } }) {
     try {
         const body = await req.json();
         const { email } = body;
